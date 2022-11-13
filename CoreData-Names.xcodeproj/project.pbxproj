@@ -16,6 +16,9 @@
 		9CCF1527292107C600F6EA32 /* Person+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF1525292107C600F6EA32 /* Person+CoreDataClass.swift */; };
 		9CCF1528292107C600F6EA32 /* Person+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF1526292107C600F6EA32 /* Person+CoreDataProperties.swift */; };
 		9CCF152B292108A500F6EA32 /* UITextField + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152A292108A500F6EA32 /* UITextField + Ext.swift */; };
+		9CCF152E29210A2400F6EA32 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152D29210A2400F6EA32 /* ModuleBuilder.swift */; };
+		9CCF153029210A2900F6EA32 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152F29210A2900F6EA32 /* Router.swift */; };
+		9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153129210A4800F6EA32 /* MainPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		9CCF1525292107C600F6EA32 /* Person+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9CCF1526292107C600F6EA32 /* Person+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Person+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9CCF152A292108A500F6EA32 /* UITextField + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Ext.swift"; sourceTree = "<group>"; };
+		9CCF152D29210A2400F6EA32 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		9CCF152F29210A2900F6EA32 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		9CCF153129210A4800F6EA32 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,7 @@
 		9CCF151C2921069500F6EA32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF152C29210A1900F6EA32 /* Helpers */,
 				9CCF15292921089400F6EA32 /* Extensions */,
 				9CCF15242921077400F6EA32 /* Model */,
 				9CCF151E292106CA00F6EA32 /* Modules */,
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9CCF1508292105EF00F6EA32 /* MainViewController.swift */,
+				9CCF153129210A4800F6EA32 /* MainPresenter.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -137,6 +145,15 @@
 				9CCF152A292108A500F6EA32 /* UITextField + Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9CCF152C29210A1900F6EA32 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9CCF152D29210A2400F6EA32 /* ModuleBuilder.swift */,
+				9CCF152F29210A2900F6EA32 /* Router.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +234,9 @@
 				9CCF1509292105EF00F6EA32 /* MainViewController.swift in Sources */,
 				9CCF150F292105EF00F6EA32 /* CoreData_Names.xcdatamodeld in Sources */,
 				9CCF1528292107C600F6EA32 /* Person+CoreDataProperties.swift in Sources */,
+				9CCF152E29210A2400F6EA32 /* ModuleBuilder.swift in Sources */,
+				9CCF153029210A2900F6EA32 /* Router.swift in Sources */,
+				9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */,
 				9CCF1527292107C600F6EA32 /* Person+CoreDataClass.swift in Sources */,
 				9CCF152B292108A500F6EA32 /* UITextField + Ext.swift in Sources */,
 				9CCF1505292105EF00F6EA32 /* AppDelegate.swift in Sources */,
