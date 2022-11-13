@@ -63,4 +63,17 @@ class CoreDataService {
         persistentContainer.viewContext.delete(person)
         saveContext()
     }
+
+    func updatePerson(withName name: String, date: Date?, gender: String?, image: Data?) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        if let persons = try? persistentContainer.viewContext.fetch(fetchRequest) as? [Person], !persons.isEmpty {
+            guard let requiredPerson = persons.first else { return }
+            requiredPerson.setValue(name, forKey: "name")
+            requiredPerson.setValue(date, forKey: "dateOfBirth")
+            requiredPerson.setValue(gender, forKey: "gender")
+            requiredPerson.setValue(image, forKey: "image")
+            try? persistentContainer.viewContext.save()
+        }
+    }
 }

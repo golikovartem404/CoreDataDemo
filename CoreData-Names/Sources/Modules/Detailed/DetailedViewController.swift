@@ -105,6 +105,7 @@ class DetailedViewController: UIViewController {
         setupLayout()
         createDatePicker()
         setupInterface()
+        presenter?.setData()
     }
 
     private func setupView() {
@@ -179,20 +180,6 @@ class DetailedViewController: UIViewController {
         dateTextField.inputView = datePicker
     }
 
-    @objc private func donePressed() {
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        dateTextField.text = dateFormatter.string(from: datePicker.date)
-        self.view.endEditing(true)
-    }
-
-    @objc private func goBack() {
-
-    }
-
-    @objc private func editButtonPressed() {
-
-    }
-
     func setupInterface() {
         if isEnabled {
             nameTextField.isEnabled = true
@@ -206,6 +193,39 @@ class DetailedViewController: UIViewController {
             genderTextField.isEnabled = false
             photoButton.isEnabled = false
             editButton.setTitle("Edit", for: .normal)
+        }
+    }
+
+    @objc private func donePressed() {
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateTextField.text = dateFormatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+
+    @objc private func goBack() {
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let date = dateFormatter.date(from: dateTextField.text ?? "")
+        presenter?.updateData(
+            withName: nameTextField.text,
+            date: date,
+            gender: genderTextField.text,
+            image: photoButton.imageView?.image?.pngData()
+        )
+        presenter?.goToMainView()
+    }
+
+    @objc private func editButtonPressed() {
+        isEnabled.toggle()
+        setupInterface()
+        if !isEnabled {
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let date = dateFormatter.date(from: dateTextField.text ?? "")
+            presenter?.updateData(
+                withName: nameTextField.text,
+                date: date,
+                gender: genderTextField.text,
+                image: photoButton.imageView?.image?.pngData()
+            )
         }
     }
 
@@ -253,6 +273,16 @@ extension DetailedViewController: UIImagePickerControllerDelegate, UINavigationC
 }
 
 extension DetailedViewController: DetailedViewProtocol {
-
+    func setupDetailedView(withName name: String, date: Date?, gender: String?, image: Data?) {
+        self.nameTextField.text = name
+        self.genderTextField.text = gender
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        if let date = date {
+            self.dateTextField.text = dateFormatter.string(from: date)
+        }
+        if let image = image {
+            self.photoButton.setImage(UIImage(data: image), for: .normal)
+        }
+    }
 }
 
