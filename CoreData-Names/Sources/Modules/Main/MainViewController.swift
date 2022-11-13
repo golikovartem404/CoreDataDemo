@@ -55,6 +55,7 @@ class MainViewController: UIViewController {
         setupNavBar()
         setupHierarchy()
         setupLayout()
+        presenter?.fetchUsers()
     }
 
     private func setupNavBar() {
@@ -91,7 +92,10 @@ class MainViewController: UIViewController {
     }
 
     @objc private func addName() {
-
+        if let name = textField.text, name != "" {
+            presenter?.savePerson(withName: name)
+            textField.text = ""
+        }
     }
 
 }
@@ -99,15 +103,27 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return presenter?.numberOfRows() ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = presenter?.getName(forIndex: indexPath)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            presenter?.deleteTableCell(byIndex: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
     }
 }
 
 extension MainViewController: MainViewProtocol {
-    
+    func reloadTable() {
+        table.reloadData()
+    }
 }
