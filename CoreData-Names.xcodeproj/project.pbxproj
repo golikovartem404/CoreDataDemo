@@ -19,6 +19,7 @@
 		9CCF152E29210A2400F6EA32 /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152D29210A2400F6EA32 /* ModuleBuilder.swift */; };
 		9CCF153029210A2900F6EA32 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152F29210A2900F6EA32 /* Router.swift */; };
 		9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153129210A4800F6EA32 /* MainPresenter.swift */; };
+		9CCF153529210B6C00F6EA32 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153429210B6C00F6EA32 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		9CCF152D29210A2400F6EA32 /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		9CCF152F29210A2900F6EA32 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		9CCF153129210A4800F6EA32 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		9CCF153429210B6C00F6EA32 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		9CCF151C2921069500F6EA32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF153329210B5E00F6EA32 /* Services */,
 				9CCF152C29210A1900F6EA32 /* Helpers */,
 				9CCF15292921089400F6EA32 /* Extensions */,
 				9CCF15242921077400F6EA32 /* Model */,
@@ -154,6 +157,14 @@
 				9CCF152F29210A2900F6EA32 /* Router.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9CCF153329210B5E00F6EA32 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9CCF153429210B6C00F6EA32 /* CoreDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */,
 				9CCF1527292107C600F6EA32 /* Person+CoreDataClass.swift in Sources */,
 				9CCF152B292108A500F6EA32 /* UITextField + Ext.swift in Sources */,
+				9CCF153529210B6C00F6EA32 /* CoreDataService.swift in Sources */,
 				9CCF1505292105EF00F6EA32 /* AppDelegate.swift in Sources */,
 				9CCF1507292105EF00F6EA32 /* SceneDelegate.swift in Sources */,
 			);
