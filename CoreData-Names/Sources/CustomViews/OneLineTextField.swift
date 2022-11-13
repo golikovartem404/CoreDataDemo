@@ -19,7 +19,12 @@ class OneLineTextField: UITextField {
         self.isEnabled = false
 
         let bottomView = UIView()
-        bottomView.frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        bottomView.frame = CGRect(
+            x: Constants.Constraints.OneLineTextField.frameX,
+            y: Constants.Constraints.OneLineTextField.frameY,
+            width: Constants.Constraints.OneLineTextField.frameWidth,
+            height: Constants.Constraints.OneLineTextField.frameHeight
+        )
         bottomView.backgroundColor = .systemGray4
         self.addSubview(bottomView)
 
@@ -27,7 +32,7 @@ class OneLineTextField: UITextField {
             make.leading.equalTo(self.snp.leading)
             make.trailing.equalTo(self.snp.trailing)
             make.bottom.equalTo(self.snp.bottom)
-            make.height.equalTo(1)
+            make.height.equalTo(Constants.Constraints.OneLineTextField.bottomViewHeight)
         }
     }
 }

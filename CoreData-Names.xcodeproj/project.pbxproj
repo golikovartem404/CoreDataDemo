@@ -23,6 +23,7 @@
 		9CCF15372921112700F6EA32 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF15362921112700F6EA32 /* DetailedViewController.swift */; };
 		9CCF15392921112E00F6EA32 /* DetailedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF15382921112E00F6EA32 /* DetailedPresenter.swift */; };
 		9CCF153C292111CD00F6EA32 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153B292111CD00F6EA32 /* OneLineTextField.swift */; };
+		9CCF153F292118D500F6EA32 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153E292118D500F6EA32 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		9CCF15362921112700F6EA32 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		9CCF15382921112E00F6EA32 /* DetailedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPresenter.swift; sourceTree = "<group>"; };
 		9CCF153B292111CD00F6EA32 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
+		9CCF153E292118D500F6EA32 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		9CCF151C2921069500F6EA32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF153D292118CC00F6EA32 /* Constants */,
 				9CCF153A292111C100F6EA32 /* CustomViews */,
 				9CCF153329210B5E00F6EA32 /* Services */,
 				9CCF152C29210A1900F6EA32 /* Helpers */,
@@ -184,6 +187,14 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		9CCF153D292118CC00F6EA32 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9CCF153E292118D500F6EA32 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -264,6 +275,7 @@
 				9CCF15372921112700F6EA32 /* DetailedViewController.swift in Sources */,
 				9CCF15392921112E00F6EA32 /* DetailedPresenter.swift in Sources */,
 				9CCF1528292107C600F6EA32 /* Person+CoreDataProperties.swift in Sources */,
+				9CCF153F292118D500F6EA32 /* Constants.swift in Sources */,
 				9CCF152E29210A2400F6EA32 /* ModuleBuilder.swift in Sources */,
 				9CCF153029210A2900F6EA32 /* Router.swift in Sources */,
 				9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */,
