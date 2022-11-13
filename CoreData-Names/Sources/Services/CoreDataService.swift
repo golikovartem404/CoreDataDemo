@@ -50,8 +50,11 @@ class CoreDataService {
 
     func savePerson(withName name: String) {
         let context = persistentContainer.viewContext
-        guard let entity = NSEntityDescription.entity(forEntityName: "Person", in: context) else {
-            print("Error while getting entity")
+        guard let entity = NSEntityDescription.entity(
+            forEntityName: Constants.Strings.CoreData.entity,
+            in: context
+        ) else {
+            print(Constants.Strings.CoreData.entityGettingError)
             return
         }
         let personObject = Person(entity: entity, insertInto: context)
@@ -65,14 +68,14 @@ class CoreDataService {
     }
 
     func updatePerson(withName name: String, date: Date?, gender: String?, image: Data?) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Person")
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.Strings.CoreData.entity)
+        fetchRequest.predicate = NSPredicate(format: Constants.Strings.CoreData.predicateFormat, name)
         if let persons = try? persistentContainer.viewContext.fetch(fetchRequest) as? [Person], !persons.isEmpty {
             guard let requiredPerson = persons.first else { return }
-            requiredPerson.setValue(name, forKey: "name")
-            requiredPerson.setValue(date, forKey: "dateOfBirth")
-            requiredPerson.setValue(gender, forKey: "gender")
-            requiredPerson.setValue(image, forKey: "image")
+            requiredPerson.setValue(name, forKey: Constants.Strings.CoreData.nameKey)
+            requiredPerson.setValue(date, forKey: Constants.Strings.CoreData.dateOfBirthKey)
+            requiredPerson.setValue(gender, forKey: Constants.Strings.CoreData.genderKey)
+            requiredPerson.setValue(image, forKey: Constants.Strings.CoreData.imageKey)
             try? persistentContainer.viewContext.save()
         }
     }

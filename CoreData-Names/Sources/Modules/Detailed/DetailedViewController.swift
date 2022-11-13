@@ -21,7 +21,7 @@ class DetailedViewController: UIViewController {
 
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.setImage(UIImage(systemName: Constants.Strings.Images.backButton), for: .normal)
         button.tintColor = .black
         button.addTarget(
             self,
@@ -33,7 +33,7 @@ class DetailedViewController: UIViewController {
 
     private lazy var editButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Edit", for: .normal)
+        button.setTitle(Constants.Strings.Buttons.editButton, for: .normal)
         button.setTitleColor(UIColor.systemGray, for: .normal)
         button.backgroundColor = .white
         button.layer.borderColor = UIColor.black.cgColor
@@ -65,31 +65,44 @@ class DetailedViewController: UIViewController {
             for: .touchUpInside
         )
         button.layer.borderColor = UIColor.black.cgColor
-        button.layer.borderWidth = 1
+        button.layer.borderWidth = 0.3
         button.layer.cornerRadius = 70
         button.clipsToBounds = true
         return button
     }()
 
     private lazy var nameTextField: OneLineTextField = {
-        let textField = OneLineTextField(placeholder: "Name")
-        if let image = UIImage(systemName: "person") {
+        let textField = OneLineTextField(placeholder: Constants.Strings.TextFieldPlaceholders.nameTextField)
+        if let image = UIImage(systemName: Constants.Strings.Images.name) {
             textField.setLeftIcon(image)
         }
         return textField
     }()
 
     private lazy var dateTextField: OneLineTextField = {
-        let textField = OneLineTextField(placeholder: "Date")
-        if let image = UIImage(systemName: "calendar") {
+        let textField = OneLineTextField(placeholder: Constants.Strings.TextFieldPlaceholders.dateTextField)
+        if let image = UIImage(systemName: Constants.Strings.Images.dateOfBirth) {
             textField.setLeftIcon(image)
         }
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: nil,
+            action: #selector(donePressed)
+        )
+        toolbar.setItems([doneButton], animated: true)
+        textField.inputAccessoryView = toolbar
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.maximumDate = Date()
+        datePicker.datePickerMode = .date
+        textField.inputView = datePicker
         return textField
     }()
 
     private lazy var genderTextField: OneLineTextField = {
-        let textField = OneLineTextField(placeholder: "Gender")
-        if let image = UIImage(systemName: "person.2.circle") {
+        let textField = OneLineTextField(placeholder: Constants.Strings.TextFieldPlaceholders.genderTextField)
+        if let image = UIImage(systemName: Constants.Strings.Images.gender) {
             textField.setLeftIcon(image)
         }
         let genderPicker = UIPickerView()
@@ -106,7 +119,6 @@ class DetailedViewController: UIViewController {
         setupView()
         setupHierarchy()
         setupLayout()
-        createDatePicker()
         setupInterface()
         presenter?.setData()
     }
@@ -131,58 +143,41 @@ class DetailedViewController: UIViewController {
     private func setupLayout() {
 
         buttonStack.snp.makeConstraints { make in
-            make.centerY.equalTo(view).multipliedBy(0.35)
+            make.centerY.equalTo(view).multipliedBy(Constants.Constraints.DetailedView.buttonStackCenterY)
             make.centerX.equalTo(view)
-            make.width.equalTo(view.snp.width).multipliedBy(0.9)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.DetailedView.buttonStackWidth)
         }
 
         editButton.snp.makeConstraints { make in
-            make.width.equalTo(80)
+            make.width.equalTo(Constants.Constraints.DetailedView.editButtonWidth)
         }
 
         photoButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.centerY.equalTo(view.snp.centerY).multipliedBy(0.7)
-            make.width.height.equalTo(140)
+            make.centerY.equalTo(view.snp.centerY).multipliedBy(Constants.Constraints.DetailedView.photoButtonCenterY)
+            make.width.height.equalTo(Constants.Constraints.DetailedView.photoButtonWidthHeight)
         }
 
         nameTextField.snp.makeConstraints { make in
-            make.top.equalTo(photoButton.snp.bottom).offset(100)
+            make.top.equalTo(photoButton.snp.bottom).offset(Constants.Constraints.DetailedView.nameTextFieldTop)
             make.centerX.equalTo(view)
-            make.width.equalTo(view.snp.width).multipliedBy(0.9)
-            make.height.equalTo(48)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.DetailedView.textFieldsWidth)
+            make.height.equalTo(Constants.Constraints.DetailedView.textFieldsHeight)
         }
 
         dateTextField.snp.makeConstraints { make in
-            make.top.equalTo(nameTextField.snp.bottom).offset(30)
+            make.top.equalTo(nameTextField.snp.bottom).offset(Constants.Constraints.DetailedView.dateTextFieldTop)
             make.centerX.equalTo(view)
-            make.width.equalTo(view.snp.width).multipliedBy(0.9)
-            make.height.equalTo(48)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.DetailedView.textFieldsWidth)
+            make.height.equalTo(Constants.Constraints.DetailedView.textFieldsHeight)
         }
 
         genderTextField.snp.makeConstraints { make in
-            make.top.equalTo(dateTextField.snp.bottom).offset(30)
+            make.top.equalTo(dateTextField.snp.bottom).offset(Constants.Constraints.DetailedView.genderTextFieldTop)
             make.centerX.equalTo(view)
-            make.width.equalTo(view.snp.width).multipliedBy(0.9)
-            make.height.equalTo(48)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.DetailedView.textFieldsWidth)
+            make.height.equalTo(Constants.Constraints.DetailedView.textFieldsHeight)
         }
-    }
-
-    private func createDatePicker() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        let doneButton = UIBarButtonItem(
-            barButtonSystemItem: .done,
-            target: nil,
-            action: #selector(donePressed)
-        )
-        toolbar.setItems([doneButton], animated: true)
-        dateTextField.inputAccessoryView = toolbar
-
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.datePickerMode = .date
-
-        dateTextField.inputView = datePicker
     }
 
     func setupInterface() {
@@ -191,26 +186,26 @@ class DetailedViewController: UIViewController {
             dateTextField.isEnabled = true
             genderTextField.isEnabled = true
             photoButton.isEnabled = true
-            editButton.setTitle("Save", for: .normal)
+            editButton.setTitle(Constants.Strings.Buttons.saveButton, for: .normal)
         } else {
             nameTextField.isEnabled = false
             dateTextField.isEnabled = false
             genderTextField.isEnabled = false
             photoButton.isEnabled = false
-            editButton.setTitle("Edit", for: .normal)
+            editButton.setTitle(Constants.Strings.Buttons.editButton, for: .normal)
         }
     }
 
     // MARK: - Button actions
 
     @objc private func donePressed() {
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = Constants.Strings.DateFormatter.dateFormat
         dateTextField.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
 
     @objc private func goBack() {
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = Constants.Strings.DateFormatter.dateFormat
         let date = dateFormatter.date(from: dateTextField.text ?? "")
         presenter?.updateData(
             withName: nameTextField.text,
@@ -225,7 +220,7 @@ class DetailedViewController: UIViewController {
         isEnabled.toggle()
         setupInterface()
         if !isEnabled {
-            dateFormatter.dateFormat = "dd.MM.yyyy"
+            dateFormatter.dateFormat = Constants.Strings.DateFormatter.dateFormat
             let date = dateFormatter.date(from: dateTextField.text ?? "")
             presenter?.updateData(
                 withName: nameTextField.text,
@@ -254,7 +249,7 @@ extension DetailedViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return genders.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -289,7 +284,7 @@ extension DetailedViewController: DetailedViewProtocol {
     func setupDetailedView(withName name: String, date: Date?, gender: String?, image: Data?) {
         self.nameTextField.text = name
         self.genderTextField.text = gender
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = Constants.Strings.DateFormatter.dateFormat
         if let date = date {
             self.dateTextField.text = dateFormatter.string(from: date)
         }

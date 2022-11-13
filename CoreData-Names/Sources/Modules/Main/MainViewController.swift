@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.setLeftPaddingPoints(10)
-        textField.placeholder = "Print your name here"
+        textField.placeholder = Constants.Strings.TextFieldPlaceholders.mainTextField
         textField.backgroundColor = .systemGray5
         textField.layer.cornerRadius = 10
         textField.clipsToBounds = true
@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
 
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Add name", for: .normal)
+        button.setTitle(Constants.Strings.Buttons.addNameButton, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button.backgroundColor = .systemBlue
@@ -49,7 +49,7 @@ class MainViewController: UIViewController {
         )
         table.register(
             UITableViewCell.self,
-            forCellReuseIdentifier: "cell"
+            forCellReuseIdentifier: Constants.Strings.CellsIdentifiers.cell
         )
         table.dataSource = self
         table.delegate = self
@@ -84,20 +84,20 @@ class MainViewController: UIViewController {
 
         textField.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.equalTo(view.snp.leading).offset(20)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-            make.height.equalTo(48)
+            make.centerX.equalTo(view)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.MainView.textFieldWidth)
+            make.height.equalTo(Constants.Constraints.MainView.textFieldHeight)
         }
 
         button.snp.makeConstraints { make in
-            make.top.equalTo(textField.snp.bottom).offset(20)
-            make.leading.equalTo(view.snp.leading).offset(20)
-            make.trailing.equalTo(view.snp.trailing).offset(-20)
-            make.height.equalTo(48)
+            make.top.equalTo(textField.snp.bottom).offset(Constants.Constraints.MainView.buttonTop)
+            make.centerX.equalTo(view)
+            make.width.equalTo(view.snp.width).multipliedBy(Constants.Constraints.MainView.buttonWidth)
+            make.height.equalTo(Constants.Constraints.MainView.buttonHeight)
         }
 
         table.snp.makeConstraints { make in
-            make.top.equalTo(button.snp.bottom).offset(20)
+            make.top.equalTo(button.snp.bottom).offset(Constants.Constraints.MainView.tableTop)
             make.leading.trailing.bottom.equalTo(view)
         }
     }
@@ -122,7 +122,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Strings.CellsIdentifiers.cell, for: indexPath)
         cell.textLabel?.text = presenter?.getName(forIndex: indexPath)
         return cell
     }
