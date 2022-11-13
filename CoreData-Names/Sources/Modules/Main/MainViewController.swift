@@ -10,6 +10,8 @@ import SnapKit
 
 class MainViewController: UIViewController {
 
+    var presenter: MainPresenterProtocol?
+
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.setLeftPaddingPoints(10)
@@ -104,4 +106,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         return cell
     }
+}
+
+extension MainViewController: MainViewProtocol {
+    
 }
