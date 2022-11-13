@@ -120,6 +120,11 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.endUpdates()
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        presenter?.showDetailedPerson(for: indexPath)
+    }
 }
 
 extension MainViewController: MainViewProtocol {

@@ -20,6 +20,9 @@
 		9CCF153029210A2900F6EA32 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF152F29210A2900F6EA32 /* Router.swift */; };
 		9CCF153229210A4800F6EA32 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153129210A4800F6EA32 /* MainPresenter.swift */; };
 		9CCF153529210B6C00F6EA32 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153429210B6C00F6EA32 /* CoreDataService.swift */; };
+		9CCF15372921112700F6EA32 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF15362921112700F6EA32 /* DetailedViewController.swift */; };
+		9CCF15392921112E00F6EA32 /* DetailedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF15382921112E00F6EA32 /* DetailedPresenter.swift */; };
+		9CCF153C292111CD00F6EA32 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCF153B292111CD00F6EA32 /* OneLineTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		9CCF152F29210A2900F6EA32 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		9CCF153129210A4800F6EA32 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		9CCF153429210B6C00F6EA32 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		9CCF15362921112700F6EA32 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
+		9CCF15382921112E00F6EA32 /* DetailedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPresenter.swift; sourceTree = "<group>"; };
+		9CCF153B292111CD00F6EA32 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		9CCF151C2921069500F6EA32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF153A292111C100F6EA32 /* CustomViews */,
 				9CCF153329210B5E00F6EA32 /* Services */,
 				9CCF152C29210A1900F6EA32 /* Helpers */,
 				9CCF15292921089400F6EA32 /* Extensions */,
@@ -128,6 +135,8 @@
 		9CCF1520292106D100F6EA32 /* Detailed */ = {
 			isa = PBXGroup;
 			children = (
+				9CCF15362921112700F6EA32 /* DetailedViewController.swift */,
+				9CCF15382921112E00F6EA32 /* DetailedPresenter.swift */,
 			);
 			path = Detailed;
 			sourceTree = "<group>";
@@ -165,6 +174,14 @@
 				9CCF153429210B6C00F6EA32 /* CoreDataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		9CCF153A292111C100F6EA32 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9CCF153B292111CD00F6EA32 /* OneLineTextField.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +261,8 @@
 			files = (
 				9CCF1509292105EF00F6EA32 /* MainViewController.swift in Sources */,
 				9CCF150F292105EF00F6EA32 /* CoreData_Names.xcdatamodeld in Sources */,
+				9CCF15372921112700F6EA32 /* DetailedViewController.swift in Sources */,
+				9CCF15392921112E00F6EA32 /* DetailedPresenter.swift in Sources */,
 				9CCF1528292107C600F6EA32 /* Person+CoreDataProperties.swift in Sources */,
 				9CCF152E29210A2400F6EA32 /* ModuleBuilder.swift in Sources */,
 				9CCF153029210A2900F6EA32 /* Router.swift in Sources */,
@@ -252,6 +271,7 @@
 				9CCF152B292108A500F6EA32 /* UITextField + Ext.swift in Sources */,
 				9CCF153529210B6C00F6EA32 /* CoreDataService.swift in Sources */,
 				9CCF1505292105EF00F6EA32 /* AppDelegate.swift in Sources */,
+				9CCF153C292111CD00F6EA32 /* OneLineTextField.swift in Sources */,
 				9CCF1507292105EF00F6EA32 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,8 @@ protocol RouterMain {
 
 protocol RouterProtocol: RouterMain {
     func initialViewController()
+    func showDetailedPerson(person: Person)
+    func popToRoot()
 }
 
 class Router: RouterProtocol {
@@ -30,6 +32,19 @@ class Router: RouterProtocol {
         if let navigationController = navigationController {
             guard let mainViewController = assemblyBuilder?.createMainModule(router: self) else { return }
             navigationController.viewControllers = [mainViewController]
+        }
+    }
+
+    func showDetailedPerson(person: Person) {
+        if let navigationController = navigationController {
+            guard let detailedViewController = assemblyBuilder?.createDetailedModule(person: person, router: self) else { return }
+            navigationController.pushViewController(detailedViewController, animated: true)
+        }
+    }
+
+    func popToRoot() {
+        if let navigationController = navigationController {
+            navigationController.popToRootViewController(animated: true)
         }
     }
 }

@@ -17,6 +17,7 @@ protocol MainPresenterProtocol: AnyObject {
     func getName(forIndex index: IndexPath) -> String
     func savePerson(withName name: String)
     func deleteTableCell(byIndex index: IndexPath)
+    func showDetailedPerson(for index: IndexPath)
 }
 
 class MainPresenter: MainPresenterProtocol {
@@ -56,5 +57,10 @@ class MainPresenter: MainPresenterProtocol {
         guard let person = persons?[index.row] else { return }
         CoreDataService.shared.delete(person: person)
         persons?.remove(at: index.row)
+    }
+
+    func showDetailedPerson(for index: IndexPath) {
+        guard let person = persons?[index.row] else { return }
+        router?.showDetailedPerson(person: person)
     }
 }
