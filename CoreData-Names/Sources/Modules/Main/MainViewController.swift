@@ -10,7 +10,11 @@ import SnapKit
 
 class MainViewController: UIViewController {
 
+    // MARK: - Properties
+
     var presenter: MainPresenterProtocol?
+
+    // MARK: - Outlets
 
     private lazy var textField: UITextField = {
         let textField = UITextField()
@@ -39,7 +43,10 @@ class MainViewController: UIViewController {
     }()
 
     private lazy var table: UITableView = {
-        let table = UITableView(frame: .zero, style: .insetGrouped)
+        let table = UITableView(
+            frame: .zero,
+            style: .insetGrouped
+        )
         table.register(
             UITableViewCell.self,
             forCellReuseIdentifier: "cell"
@@ -49,6 +56,8 @@ class MainViewController: UIViewController {
         return table
     }()
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray6
@@ -57,6 +66,8 @@ class MainViewController: UIViewController {
         setupLayout()
         presenter?.fetchUsers()
     }
+
+    // MARK: - Setups
 
     private func setupNavBar() {
         title = "Users"
@@ -91,6 +102,8 @@ class MainViewController: UIViewController {
         }
     }
 
+    // MARK: - Button actions
+
     @objc private func addName() {
         if let name = textField.text, name != "" {
             presenter?.savePerson(withName: name)
@@ -99,6 +112,8 @@ class MainViewController: UIViewController {
     }
 
 }
+
+// MARK: - UITableView Extension
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -126,6 +141,8 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         presenter?.showDetailedPerson(for: indexPath)
     }
 }
+
+// MARK: - MainViewProtocol Extension
 
 extension MainViewController: MainViewProtocol {
     func reloadTable() {
