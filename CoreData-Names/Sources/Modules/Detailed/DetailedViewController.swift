@@ -9,11 +9,15 @@ import UIKit
 
 class DetailedViewController: UIViewController {
 
+    // MARK: - Properties
+
     var presenter: DetailedPresenterProtocol?
     let datePicker = UIDatePicker()
     let dateFormatter = DateFormatter()
     var isEnabled = false
     let genders = ["Male", "Female", "Other"]
+
+    // MARK: - Outlets
 
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -57,7 +61,7 @@ class DetailedViewController: UIViewController {
         button.contentMode = .scaleAspectFill
         button.addTarget(
             self,
-            action: #selector(setImage),
+            action: #selector(chooseImage),
             for: .touchUpInside
         )
         button.layer.borderColor = UIColor.black.cgColor
@@ -88,15 +92,14 @@ class DetailedViewController: UIViewController {
         if let image = UIImage(systemName: "person.2.circle") {
             textField.setLeftIcon(image)
         }
-        let genderPicker: UIPickerView = {
-            let picker = UIPickerView()
-            picker.delegate = self
-            picker.dataSource = self
-            return picker
-        }()
+        let genderPicker = UIPickerView()
+        genderPicker.delegate = self
+        genderPicker.dataSource = self
         textField.inputView = genderPicker
         return textField
     }()
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +110,8 @@ class DetailedViewController: UIViewController {
         setupInterface()
         presenter?.setData()
     }
+
+    // MARK: - Setups
 
     private func setupView() {
         view.backgroundColor = .white
@@ -196,6 +201,8 @@ class DetailedViewController: UIViewController {
         }
     }
 
+    // MARK: - Button actions
+
     @objc private func donePressed() {
         dateFormatter.dateFormat = "dd.MM.yyyy"
         dateTextField.text = dateFormatter.string(from: datePicker.date)
@@ -229,7 +236,7 @@ class DetailedViewController: UIViewController {
         }
     }
 
-    @objc private func setImage() {
+    @objc private func chooseImage() {
         let viewController = UIImagePickerController()
         viewController.sourceType = .photoLibrary
         viewController.allowsEditing = true
@@ -237,6 +244,8 @@ class DetailedViewController: UIViewController {
         present(viewController, animated: true)
     }
 }
+
+// MARK: - PickerView Extension
 
 extension DetailedViewController: UIPickerViewDataSource, UIPickerViewDelegate {
 
@@ -258,6 +267,8 @@ extension DetailedViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
+// MARK: - ImagePickerView Extension
+
 extension DetailedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -271,6 +282,8 @@ extension DetailedViewController: UIImagePickerControllerDelegate, UINavigationC
         picker.dismiss(animated: true)
     }
 }
+
+// MARK: - DetailedViewProtocol Extension
 
 extension DetailedViewController: DetailedViewProtocol {
     func setupDetailedView(withName name: String, date: Date?, gender: String?, image: Data?) {
