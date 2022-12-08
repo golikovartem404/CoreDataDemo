@@ -7,13 +7,13 @@
 
 import UIKit
 
-class OneLineTextField: UITextField {
+final class OneLineTextField: UITextField {
 
     convenience init(placeholder: String) {
         self.init()
         self.placeholder = placeholder
         self.borderStyle = .none
-        self.textColor = .black
+        self.textColor = .yellow
         self.tintColor = .black
         self.returnKeyType = .done
         self.isEnabled = false
